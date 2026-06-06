@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bouncy Balls</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">Browser physics toy</p>
+        <h1>Bouncy Balls</h1>
+        <p class="lede">
+          A small browser-based physics toy. Balls bounce inside a rotating
+          circular wall until they find the moving gap and escape.
+        </p>
+      </section>
+
+      <section class="demo-grid" aria-label="Interactive BouncyBalls demo">
+        <div class="canvas-card">
+          <canvas id="bouncy-canvas" aria-label="BouncyBalls simulation"></canvas>
+          <div class="canvas-status" id="status-readout">0/20 live balls</div>
+        </div>
+
+        <aside class="controls" aria-label="Simulation controls">
+          <div class="button-row">
+          <button id="play-toggle" type="button" class="primary-button">Play</button>
+            <button id="reset-button" type="button">Reset</button>
+          </div>
+
+          <button id="spawn-button" type="button">Spawn Ball</button>
+          <button id="auto-toggle" type="button">Auto-spawn Off</button>
+          <button id="debug-toggle" type="button">Boundary Off</button>
+
+          <label class="control-field">
+            <span>
+              <span>Ball speed</span>
+              <output id="speed-output">260</output>
+            </span>
+            <input id="speed-slider" type="range" min="80" max="720" step="10" value="260" />
+          </label>
+
+          <label class="control-field">
+            <span>
+              <span>Gap size</span>
+              <output id="gap-output">58 deg</output>
+            </span>
+            <input id="gap-slider" type="range" min="18" max="130" step="1" value="58" />
+          </label>
+
+          <label class="control-field">
+            <span>
+              <span>Max balls</span>
+              <output id="max-output">20</output>
+            </span>
+            <input id="max-slider" type="range" min="1" max="60" step="1" value="20" />
+          </label>
+
+          <button id="stop-button" type="button" class="danger-button">Stop and Clear</button>
+
+          <p class="keyboard-note">
+            Keyboard extras: Space spawns, P pauses, R resets, A toggles
+            auto-spawn, and D toggles the boundary.
+          </p>
+        </aside>
+      </section>
+
+      <section class="explanation" aria-label="How it works">
+        <article>
+          <h2>Rotating Gap</h2>
+          <p>The wall is a circle with a rotating angular gap.</p>
+        </article>
+        <article>
+          <h2>Vector Reflection</h2>
+          <p>Collisions bounce by reflecting velocity around the wall normal.</p>
+        </article>
+        <article>
+          <h2>Escape Test</h2>
+          <p>Escape compares the ball boundary angle with the current gap angle.</p>
+        </article>
+        <article>
+          <h2>Canvas Port</h2>
+          <p>The simulation runs directly in the browser with web-native Canvas.</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="bouncyballs.js"></script>
+  </body>
+</html>
